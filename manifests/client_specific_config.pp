@@ -41,6 +41,9 @@
 #   Keyword. Sets the client specific configuration file status (present or absent)
 #   Default: present
 #
+# [*push]
+#   Array.  Redirect all traffic to gateway
+#   Default: false
 #
 # === Examples
 #
@@ -49,7 +52,8 @@
 #       server       => 'contractors',
 #       iroute       => ['10.0.1.0 255.255.255.0'],
 #       ifconfig     => '10.10.10.1 10.10.10.2',
-#       dhcp_options => ['DNS 8.8.8.8']
+#       dhcp_options => ['DNS 8.8.8.8'],
+#       push         => '"route 10.100.0.0 255.255.255.0"'
 #    }
 #
 # * Removal:
@@ -76,6 +80,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+<<<<<<< HEAD
 define openvpn::client_specific_config (
   String $server,
   Enum[present, absent] $ensure      = present,
@@ -85,6 +90,15 @@ define openvpn::client_specific_config (
   Variant[Boolean, String] $ifconfig = false,
   Array[String]  $dhcp_options       = [],
   Boolean $redirect_gateway          = false,
+=======
+define openvpn::client_specific_config(
+  $server,
+  $iroute           = [],
+  $ifconfig         = false,
+  $dhcp_options     = [],
+  $redirect_gateway = false,
+  $push             = []
+>>>>>>> - added a client specific push option
 ) {
 
   Openvpn::Server[$server]
