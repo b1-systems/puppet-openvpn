@@ -42,8 +42,8 @@
 #   Default: present
 #
 # [*push]
-#   Array.  Redirect all traffic to gateway
-#   Default: false
+#   Array.  Add other options like routes (non-iroute) to be pushed.
+#   Default: []
 #
 # === Examples
 #
@@ -80,7 +80,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-<<<<<<< HEAD
 define openvpn::client_specific_config (
   String $server,
   Enum[present, absent] $ensure      = present,
@@ -90,15 +89,7 @@ define openvpn::client_specific_config (
   Variant[Boolean, String] $ifconfig = false,
   Array[String]  $dhcp_options       = [],
   Boolean $redirect_gateway          = false,
-=======
-define openvpn::client_specific_config(
-  $server,
-  $iroute           = [],
-  $ifconfig         = false,
-  $dhcp_options     = [],
-  $redirect_gateway = false,
-  $push             = []
->>>>>>> - added a client specific push option
+  Array[String] $push                = [],
 ) {
 
   Openvpn::Server[$server]

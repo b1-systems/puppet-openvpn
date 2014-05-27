@@ -16,5 +16,6 @@ push redirect-gateway def1
 <% @route.each do |route| -%>
 push "route <%= route %>"
 <% end -%>
-<% if scope.lookupvar('push').each do |option| -%>
+<% scope.lookupvar('push').each do |push_option| -%>
+push <%= push_option %>
 <% end %>
