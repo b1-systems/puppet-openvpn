@@ -43,6 +43,15 @@
     },
     {
       "operatingsystem": "FreeBSD"
+    },
+    {
+      "operatingsystem": "SLES",
+      "operatingsystemrelease": [
+        "12.0",
+        "12.1",
+        "12.2",
+        "12.3"
+      ]
     }
   ],
   "requirements": [
